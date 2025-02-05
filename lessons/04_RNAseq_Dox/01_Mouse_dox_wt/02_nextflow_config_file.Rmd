@@ -27,6 +27,7 @@ process {
 # We are setting the language or executor to SLURM that Fiji runs.
 # If you are doing this on your laptop you want to change this to local.
   executor='slurm'
+# executor='local' for my machine.
 
 # Fiji has a long and short queue the short is reserved for quicker more intensive
 # projects so we are setting the queue to the long queu as it may take 8+ hours to run all this RNAseq!
@@ -43,6 +44,11 @@ process {
   maxForks=10
 }
 ```
-
+process {
+  executor='slurm'
+  queue='long'
+  memory='16 GB'
+  maxForks=10
+}
 
 # Ok that's the .config file (a requirement) Now let's move onto the shell script to run all this !!

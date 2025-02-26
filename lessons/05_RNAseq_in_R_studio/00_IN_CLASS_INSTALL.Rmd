@@ -1,0 +1,26 @@
+---
+title: "IN_CLASS_INSTALLS"
+author: SJM
+output: html_document
+date: "2025-02-14"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# library(rtracklayer)
+# library(IRanges)
+# library(dplyr)
+# library(tidyr)
+# library(tibble)
+# library(readr)
+# library(ggplot2)
+# library(purrr)
+# library(magrittr)
+# library(pheatmap)
+# library(textshape)
+# library(Rcpp)
+# library(matrixStats)

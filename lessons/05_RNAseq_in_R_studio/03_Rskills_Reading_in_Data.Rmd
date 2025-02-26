@@ -53,10 +53,12 @@ Note that the <- sets a variable.
 
 # we need to make the function write to an output object. To do so we use the 
 # <- assisgnement operator, here we are calling the salmon merged gene counts "counts_matrix"
+
+counts_matrix <- read.table("/scratch/Shares/rinnclass/MASTER_CLASS/STUDENTS/soma3841/data_for_class/salmon.merged.gene_counts.tsv", header=TRUE, row.names=1)
+
 # Then we will call the read.table() function that first requires a file path to the counts in quotes
 # Note that in R functions follow with () where the parameter inputs are placed.
 # Then we will call up different parameters with a comma, in this case header = TRUE, row.names =1
-counts_matrix <- read.table("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/04_RNAseq_Dox/01_Mouse_dox_wt/good_class_RNAseq/pipeline_output/star_salmon/salmon.merged.gene_counts.tsv", header=TRUE, row.names=1)
 
 # Nice, now we have an object called counts_matrix in our Environment Panel (top right)
 # Let's take a look 
@@ -75,7 +77,7 @@ To do this we will use the rownames function
 # Creating a dataframe with gene_id and gene_symbol
 # note creating columns with name = data
 g2s <- data.frame(gene_id = rownames(counts_matrix), gene_symbol = counts_matrix[ , 1])
-
+?data.frame
 # Let's save this using write.csv
 write.csv(g2s, "results/g2s.csv")
 ```
@@ -97,11 +99,13 @@ g2s <- data.frame(
 # removing gene names by indexing rows and columns via object[ rows, columns ]
 # here we take all the rows and remove the first column with -1 ]
 counts_matrix <-counts_matrix[, -1] 
+view(counts_matrix)
 # or 
 counts_matrix <- counts_matrix[, -which(names(counts_matrix) == "gene_name")]
 # or
 counts_matrix <- counts_matrix %>% 
   select(-gene_name)
+# this code defines an object counts_matrix from counts_matrix %>% is a pipe and selects everything from counts_matrix except for gene names (-) and redefines the object
 
 # There are many ways to do the same thing - keeping column name is safer
 # IMPORTANT: if you run the [ , -1] again it will keep removing cols

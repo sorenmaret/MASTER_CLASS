@@ -14,6 +14,9 @@ There are lots of powerful packages we will be using.
 The comprehensive R archive network (CRAN) is located here:
 https://cran.r-project.org/
 
+# hey hey, we did it! We can do markdown here. does this dave??
+
+
 Installing packages from here is built into R and doesn't need extra steps.
 You simply run the install.packages() function from the R console.
 

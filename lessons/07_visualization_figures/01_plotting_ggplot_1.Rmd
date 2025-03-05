@@ -49,10 +49,10 @@ Layer 1 : DATA (data types matter so good to label object accrodingly)
 ```{r loading our RNAseq analysis data TPM & COUNTS}
 
 # load TPM RESULTS: 
-load("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/TPM_results/TPM_results.Rdata")
+load("/scratch/Shares/rinnclass/MASTER_CLASS/STUDENTS/soma3841/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/TPM_results.Rdata")
 
 # laod DESEQ2 results
-load("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/counts_results_DESEQ/DESEQ_results.rdata")
+load("/scratch/Shares/rinnclass/MASTER_CLASS/STUDENTS/soma3841/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/DESEQ_results.rdata")
 
 ```
 
@@ -107,7 +107,7 @@ We can even index and run functions in aes()
 
 ggplot(filtered_res_df,
        aes(x = log2FoldChange, y = padj, color = result_name)) +
-  geom_point()
+  geom_point() + xlim(-5, 5) 
 
 # Nice now we can see that we mapped our data in the aes() layer to be by timepoint of sigifcance.
 # Let's just color the earliest time points going deeper into the mapping layer aes() layer
@@ -169,8 +169,8 @@ ggplot(filtered_res_df, aes(x = log2FoldChange, fill = result_name)) +
 # let's fix this by adding a 'position' parameter in the geom layer.
 
 ggplot(filtered_res_df, aes(x = log2FoldChange, fill = result_name)) +
-   geom_histogram(bins = 300, position = "dodge") +
-   xlim(-2, 2) 
+   geom_histogram(bins = 12, position = "dodge") +
+   xlim(-10, 10) 
 
 # so now we can see the individual data points separated!
 
@@ -203,7 +203,7 @@ ggplot(filtered_res_df,
 # so now line and fill are same color -- let's see:
 
 ggplot(filtered_res_df,
-       aes(x = log2FoldChange, fill = result_name, color = result_name)) +
+       aes(x = log2FoldChange, fill = padj < 0.01, color = result_name)) +
   geom_density(alpha = 0.0)+
   xlim(-2,2)
 

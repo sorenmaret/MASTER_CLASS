@@ -20,10 +20,10 @@ library(broom)
 ```{r loading our RNAseq analysis data TPM & COUNTS}
 
 # load TPM RESULTS: 
-load("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/TPM_results/TPM_results.Rdata")
+load("/scratch/Shares/rinnclass/MASTER_CLASS/STUDENTS/soma3841/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/TPM_results.Rdata")
 
 # laod DESEQ2 results
-load("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/counts_results_DESEQ/DESEQ_results.rdata")
+load("/scratch/Shares/rinnclass/MASTER_CLASS/STUDENTS/soma3841/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/DESEQ_results.rdata")
 
 ```
 
@@ -55,7 +55,8 @@ ggplot(filtered_res_df, aes(x = baseMean,
 ggplot(filtered_res_df, aes(x = log2FoldChange, 
                  y = lfcSE)) +
   geom_point()+
-  xlim(-5,5) +
+  xlim(-2.5,2.5) +
+  ylim(0,2) +
   geom_density_2d() 
 
 # what would happen if we change the order?

@@ -63,6 +63,11 @@ view(res_0)
 
 # IMPORTANT: "time_point" here is the factored column and would be different
 # if you called this column differently in your sample file (deseq_samples)
+
+res_0 <- results(mouse_long_dox_dds, contrast = c("n-1", "n", "n+1, n+m"))
+view(res_0)
+
+# One could compare anything by modifying the above.
 ```
 
 # Here's a breakdown of the arguments above:

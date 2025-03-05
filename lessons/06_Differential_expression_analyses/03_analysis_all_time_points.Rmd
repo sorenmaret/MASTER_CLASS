@@ -21,7 +21,7 @@ library(ggplot2)
 ```{r loading counts objects}
 
 #IMPORTANT Raw counts file
-counts_matrix <- read.table("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/04_RNAseq_Dox/01_Mouse_dox_wt/good_class_RNAseq/pipeline_output/star_salmon/salmon.merged.gene_counts.tsv", header=TRUE, row.names=1)
+counts_matrix <- read.table("/scratch/Shares/rinnclass/MASTER_CLASS/STUDENTS/soma3841/data_for_class/salmon.merged.gene_counts.tsv", header=TRUE, row.names=1)
 
 ```
 

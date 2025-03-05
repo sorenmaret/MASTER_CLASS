@@ -39,9 +39,15 @@ https://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/
 ```{r reading in TPM}
 
 # reading in table TPM
-TPM <- read.table("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/04_RNAseq_Dox/01_Mouse_dox_wt/data/results/star_salmon/salmon.merged.gene_tpm.tsv", header=TRUE, row.names=1)
+TPM <- read.table("/scratch/Shares/rinnclass/MASTER_CLASS/STUDENTS/soma3841/data_for_class/salmon.merged.gene_tpm.tsv", header=TRUE, row.names=1)
 
 view(TPM)
+
+#now we need to remove the gene name collumn
+
+TPM <- TPM %>%
+  select(-gene_name)
+
 # Ok so we can see that we are missing our gene_names but have gene_id and a TPM value for each gene across each timepoint
 # NOTE: rownames are gene_id
 
@@ -81,7 +87,7 @@ were originally made.
 ```{r Distibution of TPM values }
 
 #first the distribution of TPM
-hist(TPM_not_zero$WT_0_R1, xlim = c(0,300), breaks = 1000)
+hist(TPM_not_zero$WT_0_1, xlim = c(0,300), breaks = 1000)
 # weird we still see a lot of small values (e.g., 0.2314). let's filter our TPM object differently
 
 # First some cleaning up
@@ -178,12 +184,12 @@ Let's use this as an opportunity to explore for loops more too :)
 
 # First establish time point and replicate cols
 time_points <- c("0", "12", "24", "48", "96")
-replicates <- c("_R1", "_R2", "_R3")
+replicates <- c("_1", "_2", "_3")
 
 X_average_values <- list()
 for (tp in time_points) {
   # Subset the columns for the current time point and replicates
-  cols <- grep(paste0("WT_", tp, "_R"), colnames(TPM_filtered))
+  cols <- grep(paste0("WT_", tp, "_"), colnames(TPM_filtered))
   
   # Calculate the mean of the replicates for each row
   avg <- rowMeans(TPM_filtered[, cols])
@@ -223,7 +229,7 @@ library(matrixStats)
 # Let's establish our time points and replicates there in:
 # First establish time point and replicate cols
 time_points <- c("0", "12", "24", "48", "96")
-replicates <- c("_R1", "_R2", "_R3")
+replicates <- c("_1", "_2", "_3")
 
 ?rowSds
 # Initialize empty lists to store the results from the for loop
@@ -233,7 +239,7 @@ average_and_stddev_values <- list()
 # now each object into the for loop is "tp"
 for (tp in time_points) {
   # Subset the columns for the current time point and replicates
-  cols <- grep(paste0("WT_", tp, "_R"), colnames(TPM_filtered))
+  cols <- grep(paste0("WT_", tp, "_"), colnames(TPM_filtered))
   
   # Calculate the mean and standard deviation of the replicates for each row
   avg <- rowMeans(TPM_filtered[, cols])

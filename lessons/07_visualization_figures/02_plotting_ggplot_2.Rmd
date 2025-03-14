@@ -251,7 +251,7 @@ ggplot(filtered_res_df, aes(x = pvalue,
   scale_x_continuous() +
   xlim(0, 0.01) +
   ylim(0, 0.01) +
-  scale_color_brewer(palette =  "Set1") 
+  scale_color_brewer(palette =  "Set9") 
 # coool so we zoomed in on the bottom left of the plot
 
 ```

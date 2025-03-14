@@ -74,7 +74,7 @@ pivot_longer_tpm_df <- average_and_stddev_values_2 %>%
   pivot_longer(cols = all_of(time_points), names_to = 'Time', values_to = 'TPM')
 
 # Now to plot:
-ggplot(melt_tpm_df, aes(x = value)) +
+ggplot(pivot_longer_tpm_df, aes(x = value)) +
   geom_histogram(bins = 50) +
   facet_wrap(~ variable, scales = "free_x")+
   xlim(0,1000) +
